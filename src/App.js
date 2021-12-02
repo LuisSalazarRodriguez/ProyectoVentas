@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { PageLogin } from "./pages/login";
+import { PageHome } from "./pages/home";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Header } from "./components/header";
+import { Aside } from "./components/aside";
+import { Main } from "./components/main";
+import { Footer } from "./components/footer";
+import { PageProductos } from "./pages/productos";
+import { PageClientes } from "./pages/clientes";
+import { PagePedidos } from "./pages/pedidos";
+
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* <PageLogin/> */}
+      {/* <PageHome/>       */}
+      <Router>
+        <Header />
+        <section className="home-section">
+          <Aside />
+          <Main>
+            <Switch>
+              <Route exact path="/">
+                <PageHome />
+              </Route>
+              <Route exact path="/login">
+                <PageLogin />
+              </Route>
+              <Route exact path="/PageProductos">
+                <PageProductos />
+              </Route>
+              <Route exact path="/PageClientes">
+                <PageClientes />
+              </Route>
+              <Route exact path="/PagePedidos">
+                <PagePedidos />
+              </Route>
+            </Switch>
+          </Main>
+        </section>
+        <Footer />
+      </Router>
     </div>
   );
 }

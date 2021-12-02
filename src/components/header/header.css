@@ -1,0 +1,30 @@
+.header{
+    background: rgb(78, 152, 248);
+}
+.header-section-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.header-h1{
+    font-size: 15px;
+    color: #fff;    
+    align-items: center;
+}
+.header-div {
+  display: flex;  
+  margin: 5px;
+  width: 100vh;
+}
+.header-img {
+  width: 30px;
+  height: 20px;
+}
+.header-div-input{
+    width: 90%;
+}
+.header-img-usuario {
+    width: 40px;
+    height: 35px;
+    border: solid 1px black;
+  }
+

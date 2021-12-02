@@ -1,0 +1,11 @@
+.aside {
+  border: solid 1px black;
+  width: 15vh;
+  flex-direction: row;
+  text-align: center;
+}
+.aside-img {
+  margin-top: 30px;
+  width: 70px;
+  height: 60px;
+}

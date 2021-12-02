@@ -1,0 +1,110 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "userName": "lsalazar",
+      "password": "123456",
+      "NombresApellidos": "Luis Salazar R.",
+      "codigoCompania": "001",
+      "nombreCompania": "RIPLEY SAC",
+      "codigoDivision": "001",
+      "nombreDivision": "TIENDA POR DEPARTAMENTO",
+      "codigoOficina": "001",
+      "nombreOficina": "INDEPENDENCIA"
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "codigo": "000001",
+      "descripcion": "Polo Trifolio Adicolor Essentials",
+      "codigoLinea": "001",
+      "codigoMarca": "00002",
+      "codigoUnidaMedida": "UNI",
+      "precio": 130.00,
+      "codigoMoneda": "S/.",
+      "estadoRegistro": "AC",
+      "imagen": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gJASUNDX1BST0ZJTEUAAQEAAAIwQURCRQIQAABtbnRyUkdCIFhZWiAHzwAGAAMAAAAAAABhY3NwQVBQTAAAAABub25lAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLUFEQkUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApjcHJ0AAAA/AAAADJkZXNjAAABMAAAAGt3dHB0AAABnAAAABRia3B0AAABsAAAABRyVFJDAAABxAAAAA5nVFJDAAAB1AAAAA5iVFJDAAAB5AAAAA5yWFlaAAAB9AAAABRnWFlaAAACCAAAABRiWFlaAAACHAAAABR0ZXh0AAAAAENvcHlyaWdodCAxOTk5IEFkb2JlIFN5c3RlbXMgSW5jb3Jwb3JhdGVkAAAAZGVzYwAAAAAAAAARQWRvYmUgUkdCICgxOTk4KQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWFlaIAAAAAAAAPNRAAEAAAABFsxYWVogAAAAAAAAAAAAAAAAAAAAAGN1cnYAAAAAAAAAAQIzAABjdXJ2AAAAAAAAAAECMwAAY3VydgAAAAAAAAABAjMAAFhZWiAAAAAAAACcGAAAT6UAAAT8WFlaIAAAAAAAADSNAACgLAAAD5VYWVogAAAAAAAAJjEAABAvAAC+nP/bAIQABAQEBAUEBQYGBQcIBwgHCgoJCQoKEAsMCwwLEBgPEQ8PEQ8YFRkVExUZFSYeGhoeJiwlIyUsNS8vNUM/Q1dXdQEEBAQEBQQFBgYFBwgHCAcKCgkJCgoQCwwLDAsQGA8RDw8RDxgVGRUTFRkVJh4aGh4mLCUjJSw1Ly81Qz9DV1d1/8AAEQgAVQBVAwEiAAIRAQMRAf/EAIwAAQACAwEBAQAAAAAAAAAAAAAGBwMECAIFARAAAgICAQIDBgMHBQAAAAAAAQIAAwQRBQYSByExFCJBQnGBEyNSMlFTYZKxwhVUYnOiAQADAQEBAAAAAAAAAAAAAAAAAgQFAQMRAAMAAgAEAwkBAAAAAAAAAAABAgMRBBIhMQUyYhMUFSIkQVFTYXL/2gAMAwEAAhEDEQA/AO2oiIwoiJ+gEnQgBTXjnx/H29CZPIXUBsnAvofGt+NZstWtvsVMoLguWzjj3ZiEsbvd1vfyhQROmvE3pXmuo+E9jwsjsC2paavhcU+R5TXTnQPLh/Y04y2mzuLEmvtVe797TK8Qlu51Dba0bnhmRRhvdrvvTOluC4qniuKxcOsD8usBz+p9e833M+tPaY1iVVq1ne4QBm1ruIHmZ4mopUyklpaMW3Tptvbb7iIidFEREAEREAPFjrWjOx8lBJnnBtZlQtrbqSf5GYcv30NX6h5zWz1bG9mcHyNoB+6GdQyJCoUyM8j1twHGdQYHDZN7rl5evwwEJQd3kNn+ZkX6i6vzcGiqjBGBbezfnpfmpjPVSRvvAYgzn+/hc7OTIQ8pRarXvfx2TdlKLWI07CzbeSsi9xb9Sw2MkjtU6mlcBsECRrpfmb8zp7DbLuxmzUoAvWm5LRsEqG2hI02tySduqyd/CArMMRE4KIiIAIiIAQzr/ItxOlOTy6LbKsmqoCmxGKlXdgq+nqNmV7T1pzJ4EPnZIv8AwlQs5RVYsfID3QBJN4l5vbVw2ET7mRlM7r+oUjYB+5BkCxeGOZX7Mj7qfMoYqR66DggfTukOW7fFxEtrU9TTwYoXBVdJNuuhamD0fx/IUUZ112UlruMgBLO0LdoKLB/yAUCb1Xh101UKwiZK9gXRGQ/myAhXI3osvcdGS3GqWumpB5BVAA+k2wZoGeQerpXE4b/UMjBtyHyMmmz3bXBVnO27joA7J9TIX0v4h8nzXK8Xj2JQlGRVYGVFO9hCw8yTLjvQ2CzTEaTQI+BPxnKPBUjiraAO4W4t6K5J9GqfREh4vJeOsTTeubqXcFijLGdNLfL8p1TERLDOEREAEREAKZ8V9rn9LP8AA35CH7qrf4zd6NwWuzarPkQ22f4D+08eMKKvDcNk70aeXp/psR1M+90VYq4LOPVtAfQSSZ+tp+g0ud/DpS/Y0WICRMqnepq957BM1ROt69ZaZ5lt0K2nLnU2M2N1P1BjD0e1LkP/AHgMf/RM6if9mc+9bYwbxCwk9FyKOOU/VshlMk4yVWJf6Rd4fXLnf9hl7xESkzxERABERACpfGb3+k8ekAd13J4yL9RtpHehed5FMO2n9g0XPUyOo2rIdEHctHrThcnl+Csox9G+uxLq1OtOazvt2fQkehlQ9M05mPlciMog3PlWNYSumLsdktoCS3NLiFXXy6NDHeP3C42ubn3r7lkP1FyaKxNtYUDuO0HlMVXVvLWAasQA+hCCfFzsezJwr6UUM1qGsA+h7xqfA6eKihVViyVjsB1rfZ5T22yMsSzqLk2FaDIfbnXlWuh9fKVHy/LZFniHQbg7V08vj0paR7vbVaoKA/vG9mWrxyfjZmMmvnDfZfORnp/wz5bG6nPKcnyVV1C5D5CYyFigub59MAAxOix+JAnllirUL1JlfCZceL2tVryNJfnZdEREpIBERABERABKSyQF6m5hB/ud/cqDERbGnuSni61fLxQf4oP9PvSG8JUtdDhf4r/3iIj7DE/6dUNnsT8tTEfcgSbxEeewldxERGOCIiAH/9k="
+    }
+  ],
+  "lineas":[
+    {
+      "id": 1,
+      "codigoLinea": "001",
+      "nombreLinea": "POLOS",
+      "estadoRegistro": "AC"
+    },
+    {
+      "id": 2,
+      "codigoLinea": "002",
+      "nombreLinea": "PANTALONES",
+      "estadoRegistro": "AC"
+    },
+    {
+      "id": 3,
+      "codigoLinea": "003",
+      "nombreLinea": "ZAPATILLAS",
+      "estadoRegistro": "AC"
+    },
+    {
+      "id": 4,
+      "codigoLinea": "004",
+      "nombreLinea": "MEDIAS",
+      "estadoRegistro": "AC"
+    }
+  ],
+  "marcas":[
+    {
+      "id": 1,
+      "codigoMarca": "00001",
+      "nombreMarca": "ADIDAS",
+      "estadoRegistro": "AC"
+    },
+    {
+      "id": 2,
+      "codigoMarca": "00002",
+      "nombreMarca": "NIKE",
+      "estadoRegistro": "AC"
+    },
+    {
+      "id": 3,
+      "codigoMarca": "00003",
+      "nombreMarca": "TOMMY HILFIGER",
+      "estadoRegistro": "AC"
+    }
+  ],
+  "unidadMedida": [
+    {
+      "id": 1,
+      "codigoUnidaMedida": "UNI",
+      "descripcion": "UNIDAD",
+      "estadoRegistro": "AC"
+    },
+    {
+      "id": 2,
+      "codigoUnidaMedida": "CJA",
+      "descripcion": "CAJA",
+      "estadoRegistro": "AC"
+    }
+  ],
+  "monedas":[
+    {
+      "id": 1,
+      "codigoMoneda": "S/.",
+      "descripcion": "SOLES",
+      "estadoRegistro": "AC"
+    }
+  ],
+  "estados":[
+    {
+      "id": 1,
+      "estadoRegistro": "AC",
+      "descripcion": "ACTIVO"
+    },
+    {
+      "id": 2,
+      "estadoRegistro": "IN",
+      "descripcion": "INACTIVO"
+    }
+  ]
+}
