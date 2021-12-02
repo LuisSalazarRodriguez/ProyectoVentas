@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./login.css";
 
 const PageLogin = () => {
   const [usuario, setUsuario] = useState({
-    userName: '',
-    password: ''
+    userName: "",
+    password: "",
   });
+  const history = useHistory();
 
   function getusuario(userName, password) {
     axios
       .get(" http://localhost:3000/usuarios")
       .then((response) => {
-        const data = response.data;        
+        const data = response.data;
         const acceso = data.filter(
           (item) => item.userName == userName && item.password == password
         );
-        // console.log('acceso', acceso[0]);        
-        if (acceso.length > 0){
+        // console.log('acceso', acceso[0]);
+        if (acceso.length > 0) {
           alert("Bienvenido, acceso correcto");
-        }else{
+          history.push("/");
+        } else {
           alert("Credenciales NO validas");
         }
       })
@@ -32,14 +35,14 @@ const PageLogin = () => {
 
   function loginValido(e) {
     e.preventDefault();
-    // console.log('usuario', usuario);    
+    // console.log('usuario', usuario);
     getusuario(usuario.userName, usuario.password);
   }
 
   return (
     <main>
       <section className="login-section">
-        <form>
+        <form onSubmit={loginValido}>
           <div className="login-container">
             <img
               className="login-img"
@@ -82,7 +85,7 @@ const PageLogin = () => {
             />
           </div>
           <div>
-            <button id="entrar" name="entrar" className="login-button" onClick={loginValido}>
+            <button id="entrar" name="entrar" className="login-button">
               ENTRAR
             </button>
           </div>

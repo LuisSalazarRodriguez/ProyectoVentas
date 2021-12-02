@@ -18,22 +18,22 @@ const Aside = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/PageProductos" exact>
+            <NavLink to="/productos" exact>
               <img src={imgProducto} className="aside-img" alt="Productos" />
             </NavLink>
           </li>
           <li>
-            <NavLink to="/PageClientes" exact>
+            <NavLink to="/clientes" exact>
               <img src={imgCliente} className="aside-img" alt="Clientes" />
             </NavLink>
           </li>
           <li>
-            <NavLink to="/PagePedidos" exact>
+            <NavLink to="/pedidos" exact>
               <img src={imgPedido} className="aside-img" alt="Pedidos" />
             </NavLink>
           </li>
           <li>
-            <NavLink to="/PageMas" exact>
+            <NavLink to="/mas" exact>
               <img src={imgMas} className="aside-img" alt="Mas opciones" />
             </NavLink>
           </li>
