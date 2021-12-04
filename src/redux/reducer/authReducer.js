@@ -8,7 +8,6 @@ const authReducer = (state = { ...initialState }, action) => {
     case "SET_LOGIN":
       return { ...state, isLogin: action.payload };
     case "SET_USER":
-      // console.log('action', action);
       return { ...state, userData: action.payload };
     case "RESET_USER":
       return { initialState };

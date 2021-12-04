@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-// import axios from "axios";
 import "./login.css";
 import { auth } from "../../redux/actions/auth";
 
@@ -37,26 +36,24 @@ const PageLogin = () => {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+  const { isLogin } = state.auth;
 
   function loginValido(e) {
     e.preventDefault();
-    dispatch({ type: "SET_LOGIN", payload: true });
     dispatch(auth(usuario.userName, usuario.password));
+  }
 
-    console.log("state", state);
-    if (state.auth.userData.length > 0) {
+  useEffect(() => {
+    if (isLogin) {
       alert("Bienvenido, acceso correcto");
       history.push("/");
-    } else {
-      alert("Credenciales NO validas");
     }
-  }
-  // console.log('state.userData', state.userData);
+  }, [isLogin]);
 
   return (
     <main>
       <section className="login-section">
-        <form>
+        <form onSubmit={loginValido}>
           <div className="login-container">
             <img
               className="login-img"
@@ -99,12 +96,7 @@ const PageLogin = () => {
             />
           </div>
           <div>
-            <button
-              id="entrar"
-              name="entrar"
-              className="login-button"
-              onClick={loginValido}
-            >
+            <button id="entrar" name="entrar" className="login-button">
               ENTRAR
             </button>
           </div>
