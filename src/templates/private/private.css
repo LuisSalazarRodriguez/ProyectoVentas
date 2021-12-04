@@ -1,6 +1,11 @@
-.private{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr) ;
+.private {
+  display: flex;
+  /* grid-template-columns: repeat(2, 1fr) ;
     gap: 20px;
-    height: 87vh;
+    height: 87vh; */
+  height: calc(100vh - 105px);
+}
+
+.private > main {
+  flex-grow: 1;
 }

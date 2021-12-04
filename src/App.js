@@ -7,6 +7,8 @@ import { PageHome } from "./pages/home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { TemplatePrivate } from "./templates/private/";
 import { PageProductos } from "./pages/productos";
+import { PageProductosAgregar } from "./pages/productos/agregar";
+import { PageProductosEditar } from "./pages/productos/editar";
 import { PageClientes } from "./pages/clientes";
 import { PagePedidos } from "./pages/pedidos";
 
@@ -26,6 +28,16 @@ function App() {
             <Route exact path="/productos">
               <TemplatePrivate>
                 <PageProductos />
+              </TemplatePrivate>
+            </Route>
+            <Route exact path="/productos/agregar">
+              <TemplatePrivate>
+                <PageProductosAgregar />
+              </TemplatePrivate>
+            </Route>
+            <Route exact path="/productos/editar/:id">
+              <TemplatePrivate>
+                <PageProductosEditar />
               </TemplatePrivate>
             </Route>
             <Route exact path="/clientes">
