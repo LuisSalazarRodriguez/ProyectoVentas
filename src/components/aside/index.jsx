@@ -32,11 +32,11 @@ const Aside = () => {
               <img src={imgPedido} className="aside-img" alt="Pedidos" />
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/mas" exact>
               <img src={imgMas} className="aside-img" alt="Mas opciones" />
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
       <div></div>

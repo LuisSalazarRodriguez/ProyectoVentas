@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import "./login.css";
+import { auth } from "../../redux/actions/auth";
 
 const PageLogin = () => {
   const [usuario, setUsuario] = useState({
@@ -10,33 +12,39 @@ const PageLogin = () => {
   });
   const history = useHistory();
 
-  function getusuario(userName, password) {
-    axios
-      .get(" http://localhost:3000/usuarios")
-      .then((response) => {
-        const data = response.data;
-        const acceso = data.filter(
-          (item) => item.userName == userName && item.password == password
-        );
-        // console.log('acceso', acceso[0]);
-        if (acceso.length > 0) {
-          alert("Bienvenido, acceso correcto");
-          history.push("/");
-        } else {
-          alert("Credenciales NO validas");
-        }
-      })
-      .catch((e) => {});
-  }
+  // function getusuario(userName, password) {
+  //   axios
+  //     .get(" http://localhost:3000/usuarios")
+  //     .then((response) => {
+  //       const data = response.data;
+  //       const acceso = data.filter(
+  //         (item) => item.userName == userName && item.password == password
+  //       );
+  //       // console.log('acceso', acceso[0]);
+  //       if (acceso.length > 0) {
+  //         alert("Bienvenido, acceso correcto");
+  //         history.push("/");
+  //       } else {
+  //         alert("Credenciales NO validas");
+  //       }
+  //     })
+  //     .catch((e) => {});
+  // }
 
   // useEffect(() => {
   //   getusuario();
   // }, []);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   function loginValido(e) {
-    e.preventDefault();
-    // console.log('usuario', usuario);
-    getusuario(usuario.userName, usuario.password);
+    e.preventDefault();    
+    dispatch(auth(usuario.userName, usuario.password));    
+    // dispatch({ type: "SET_LOGIN", payload: true });
+
+    setTimeout(() => {
+      console.log("state", state);      
+    }, 1000);
   }
 
   return (
