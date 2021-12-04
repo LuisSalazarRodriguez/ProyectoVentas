@@ -34,23 +34,29 @@ const PageLogin = () => {
   // useEffect(() => {
   //   getusuario();
   // }, []);
+
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
   function loginValido(e) {
-    e.preventDefault();    
-    dispatch(auth(usuario.userName, usuario.password));    
-    // dispatch({ type: "SET_LOGIN", payload: true });
+    e.preventDefault();
+    dispatch({ type: "SET_LOGIN", payload: true });
+    dispatch(auth(usuario.userName, usuario.password));
 
-    setTimeout(() => {
-      console.log("state", state);      
-    }, 1000);
+    console.log("state", state);
+    if (state.auth.userData.length > 0) {
+      alert("Bienvenido, acceso correcto");
+      history.push("/");
+    } else {
+      alert("Credenciales NO validas");
+    }
   }
+  // console.log('state.userData', state.userData);
 
   return (
     <main>
       <section className="login-section">
-        <form onSubmit={loginValido}>
+        <form>
           <div className="login-container">
             <img
               className="login-img"
@@ -93,7 +99,12 @@ const PageLogin = () => {
             />
           </div>
           <div>
-            <button id="entrar" name="entrar" className="login-button">
+            <button
+              id="entrar"
+              name="entrar"
+              className="login-button"
+              onClick={loginValido}
+            >
               ENTRAR
             </button>
           </div>
