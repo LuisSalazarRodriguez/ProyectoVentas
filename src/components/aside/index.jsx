@@ -5,7 +5,7 @@ import imgMenus from "../../image/menus.png";
 import imgProducto from "../../image/producto.png";
 import imgCliente from "../../image/cliente.jpg";
 import imgPedido from "../../image/pedido.png";
-import imgMas from "../../image/mas.png";
+// import imgMas from "../../image/mas.png";
 
 const Aside = () => {
   return (

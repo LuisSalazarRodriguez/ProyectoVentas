@@ -1,11 +1,11 @@
-import React from 'react';
-
+import React from "react";
+import { ListadoProductos } from "../../components/listadoProductos/index";
 const PageProductos = () => {
-    return (
-        <div>
-            PRODUCTOS
-        </div>
-    );
+  return (
+    <div>      
+      <ListadoProductos/>
+    </div>
+  );
 };
 
 export { PageProductos };

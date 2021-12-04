@@ -10,7 +10,7 @@ export const auth = (userName, password) => {
           password
       );
     //   console.log("resultado backend:", resultado.data[0]);
-      if (resultado.data[0] == undefined) {
+      if (resultado.data[0] === undefined) {
         alert("Credenciales NO validas");
       } else {
         dispatch({ type: "SET_LOGIN", payload: true });

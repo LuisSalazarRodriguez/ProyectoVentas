@@ -1,0 +1,10 @@
+.listadoproductos-div{
+    margin: 20px;
+    text-align: center;
+}
+.listadoproductos-button-flex{
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    margin: 15px;
+  }
