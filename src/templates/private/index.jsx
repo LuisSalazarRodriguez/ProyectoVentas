@@ -10,14 +10,14 @@ import { useHistory } from "react-router-dom";
 
 const TemplatePrivate = (props) => {
   const { children } = props;
-  const { isLogin, userData } = useSelector((state) => state.auth);
+  const { isLogin, userData, userName } = useSelector((state) => state.auth);
   const history = useHistory();
   if (isLogin === false) {
     history.push("/login");
   }
   return (
     <div>
-      <Header datosUsuario={userData} />
+      <Header datosUsuario={userName} />
       <div className="private">
         <Aside />
         <Main>{children}</Main>

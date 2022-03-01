@@ -6,8 +6,9 @@ import imgBuscar from "../../image/imgBuscar.png";
 import imgLogeado from "../../image/imgLogeado.png";
 
 const Header = (props) => {
-  const { NombresApellidos, nombreCompania, nombreDivision, nombreOficina } =
-    props.datosUsuario;
+  // const { NombresApellidos, nombreCompania, nombreDivision, nombreOficina } =
+  //   props.datosUsuario;
+  const username = props.datosUsuario;  
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -23,7 +24,7 @@ const Header = (props) => {
         <div className="header-div header-h1">
           <h1>Modulo de Ventas</h1>
         </div>
-        <div className="header-div">
+        {/* <div className="header-div">
           <button>
             <img className="header-img" src={imgBuscar} alt="" />
           </button>
@@ -58,10 +59,11 @@ const Header = (props) => {
             value={nombreOficina}
             disabled
           />
-        </div>
-        <div className="header-div header-h2">
+        </div> */}
+        <div className="header-div ">
           <img className="header-img-usuario" src={imgLogeado} alt="" />
-          <h2>{NombresApellidos}</h2>
+          {/* <h2>{NombresApellidos}</h2> */}
+          <h2>{username}</h2>
           <button className="header-cerrar-sesision" onClick={cerrarSesion}>
             Salir
           </button>
