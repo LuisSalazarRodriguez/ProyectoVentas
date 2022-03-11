@@ -70,7 +70,21 @@ const insertar=()=>{
   return (
   <div>
     <h1> Listado de Pedidos</h1>
-    <Button id="insertar" color="success" onClick={()=>abrirModalInsertar()}>Insertar Nuevo Lote</Button>
+    <form>
+      <label>Cliente
+        <input type="text" />
+      </label>
+      <label>Ubigeo
+        <input type="text" />
+      </label>
+      <label>Dirección
+        <input type="text" />
+      </label>
+      <label>Producto
+        <input type="text" />
+      </label>
+    </form>
+    {/* <Button id="insertar" color="success" onClick={()=>abrirModalInsertar()}>Insertar Nuevo Lote</Button> */}
     <div className="detalleProducto">
       <table className="table table-striped">
         <thead>
@@ -95,13 +109,25 @@ const insertar=()=>{
               <td>{producto.Subtotal}</td>
               <td>{producto.Total}</td>
               <td>
-                <Button color="primary" onClick={()=>seleccionarPedido(producto,'Editar')}>Editar</Button>
+                {/* <Button color="primary" onClick={()=>seleccionarPedido(producto,'Editar')}>Editar</Button> */}
                 <Button color="danger" onClick={()=>seleccionarPedido(producto,'Eliminar')}>Eliminar</Button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <form>
+      <label>SubTotal
+        <input type="text" />
+      </label>
+      <label>IGV
+        <input type="text" />
+      </label>
+      <label>Total
+        <input type="text" />
+      </label>
+    </form>
+      
     </div>
     <Modal isOpen={modalInsertar}>
       <ModalHeader>
