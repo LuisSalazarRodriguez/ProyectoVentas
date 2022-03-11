@@ -67,7 +67,7 @@ const insertar=()=>{
   return (
   <div>
     <h1> Listado de Clientes</h1>
-    <Button id="insertar" color="success" onClick={()=>abrirModalInsertar()}>Insertar Nuevo Lote</Button>
+    <Button id="insertar" color="success" onClick={()=>abrirModalInsertar()}>Insertar Nuevo Cliente</Button>
     <div className="detalleClientes">
       <table className="table table-striped">
         <thead>
