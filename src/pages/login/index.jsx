@@ -39,7 +39,6 @@ const PageLogin = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { isLogin } = state.auth;
-
   function loginValido(e) {
     e.preventDefault();
     dispatch(auth(usuario.userName, usuario.password));
