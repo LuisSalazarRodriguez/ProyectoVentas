@@ -6,26 +6,36 @@ import { BotonNuevo } from "../../components/button/botonNuevo";
 import { BotonModificar } from "../../components/button/botonModificar";
 import {FormGroup,ModalFooter,Button,Modal,ModalBody,ModalHeader} from "reactstrap";
 
+import { datProducto } from "../../redux/actions/productoActions";
+import { useDispatch, useSelector } from "react-redux";
 
 import "../../components/productos/productos.css";
 
 const PageProductos = () => {
-  const dataProductos = [
-    {id:1,Producto:"Memoria USB",Linea:"PC",UM:"A",Estado:"Activo",Marca:"Kingston",Precio:50.00,Imagen:"null"},
-  ];
+
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const { dataProductos } = state.producto;
+  // console.log('state', state);
+    
+  // const dataProductos = [
+  //   {producto_codigo:"1",producto_descripcion:"Memoria USB",linea_codigo:"PC",um_codigo:"A",producto_estado:"Activo",marca_codigo:"Kingston",producto_precio:50.00,producto_imagen:"null",moneda_codigo:"S/."},
+  //   {producto_codigo:"2",producto_descripcion:"DISCO DURO",linea_codigo:"PC",um_codigo:"A",producto_estado:"Activo",marca_codigo:"Kingston",producto_precio:50.00,producto_imagen:"null",moneda_codigo:"S/."},
+  // ];   
   const [data, setData] = useState(dataProductos);
   const [modalInsertar,setModalInsertar] = useState(0);
   const [modalEditar,setModalEditar] = useState(0);
   const [modalEliminar,setModalEliminar] = useState(0);
   const [productoSeleccionado,setProductoSeleccionado] = useState({
-    id:'',
-    Producto:'',
-    Linea:'',
-    UM:'',
-    Estado:'',
-    Marca:'',
-    Precio:'',
-    Imagen:'',
+    producto_codigo:'',
+    producto_descripcion:'',
+    linea_codigo:'',
+    um_codigo:'',
+    producto_estado:'',
+    marca_codigo:'',
+    producto_precio:0,
+    producto_imagen:'',
+    moneda_codigo: ''
   });
   const seleccionarProducto =(elemento,caso)=>{
     setProductoSeleccionado(elemento);
@@ -41,14 +51,14 @@ const PageProductos = () => {
   const editar=()=>{
     var dataNueva=data;
     dataNueva.map(producto=>{
-        if(producto.id===productoSeleccionado.id){  
-            producto.Producto=productoSeleccionado.Producto;
-            producto.Linea=productoSeleccionado.Linea;
-            producto.UM=productoSeleccionado.UM;
-            producto.Estado=productoSeleccionado.Estado;
-            producto.Marca=productoSeleccionado.Marca;
-            producto.Precio=productoSeleccionado.Precio;
-            producto.Imagen=productoSeleccionado.Imagen;
+        if(producto.producto_codigo===productoSeleccionado.producto_codigo){  
+            producto.producto_descripcion=productoSeleccionado.producto_descripcion;
+            producto.linea_codigo=productoSeleccionado.linea_codigo;
+            producto.um_codigo=productoSeleccionado.um_codigo;
+            producto.producto_estado=productoSeleccionado.producto_estado;
+            producto.marca_codigo=productoSeleccionado.marca_codigo;
+            producto.producto_precio=productoSeleccionado.producto_precio;
+            producto.producto_imagen=productoSeleccionado.producto_imagen;
         }
     }
     );
@@ -56,7 +66,7 @@ const PageProductos = () => {
     setModalEditar(false);
   }
   const eliminar=()=>{
-    setData(data.filter(producto=>producto.id!==productoSeleccionado.id));
+    setData(data.filter(producto=>producto.producto_codigo!==productoSeleccionado.producto_codigo));
     setModalEliminar(false);
   }
   const abrirModalInsertar=()=>{
@@ -65,7 +75,7 @@ const PageProductos = () => {
   }
   const insertar=()=>{
     var valorInsertar = productoSeleccionado;
-    valorInsertar.id=data[data.length-1].id+1;
+    valorInsertar.producto_codigo=data[data.length-1].producto_codigo+1;
     var dataNueva=data;
     dataNueva.push(valorInsertar);
     setData(dataNueva);
@@ -80,36 +90,31 @@ const PageProductos = () => {
     console.log("componente agregar productos (Nuevo)");
   };
 
-  function getProductos() {
-    axios.get("http://localhost:3000/productos").then(({ data }) => {
-      setProducts(data);
-    });
-  }
-
   useEffect(() => {
-    getProductos();
+    dispatch(datProducto());
   }, []);
+
   return (
 <div>
-    <h1> Listado de Pedidos</h1>
-    <Button id="insertar" color="success" onClick={()=>abrirModalInsertar()}>Insertar Nuevo Pedido</Button>
+    <h1> Listado de Productos</h1>
+    <Button producto_codigo="insertar" color="success" onClick={()=>abrirModalInsertar()}>Insertar Nuevo Producto</Button>
     <div className="detalleProducto">
       <table className="table table-striped">
         <thead>
           <tr>
-            <th>Producto</th>
-            <th>Linea</th>
-            <th>Marca</th>
-            <th>Precio</th>
+            <th>producto</th>
+            <th>linea</th>
+            <th>marca</th>
+            <th>precio</th>
           </tr>
         </thead>
-        <tbody>
-          {data.map(producto=>(
-            <tr key={producto.id}>
-              <td>{producto.Producto}</td>
-              <td>{producto.Linea}</td>
-              <td>{producto.Marca}</td>
-              <td>{producto.Precio}</td>
+        <tbody>          
+          {data.length !== undefined && data.map(producto=>(
+            <tr key={producto.producto_codigo}>
+              <td>{producto.producto_descripcion}</td>
+              <td>{producto.linea_codigo}</td>
+              <td>{producto.marca_codigo}</td>
+              <td>{producto.producto_precio}</td>
               <td>
                 <Button color="primary" onClick={()=>seleccionarProducto(producto,'Editar')}>Editar</Button>
                 <Button color="danger" onClick={()=>seleccionarProducto(producto,'Eliminar')}>Eliminar</Button>
@@ -131,17 +136,18 @@ const PageProductos = () => {
           className="form-control" 
           readonly 
           type="hidden" 
-          value={productoSeleccionado && productoSeleccionado.id} 
+          value={productoSeleccionado && productoSeleccionado.producto_codigo} 
           onChange={handleChange}
-          value={data[data.length-1].id+1} />
+          // value={data[data.length-1].producto_codigo+1} 
+          />
         </FormGroup>
         <FormGroup>
-          <label>Producto</label>
+          <label>Descripcion</label>
           <input
           className="form-control"
           type="text"
-          name="Producto"
-          value = {productoSeleccionado ? productoSeleccionado.Producto : ''}
+          name="producto_descripcion"
+          value = {productoSeleccionado ? productoSeleccionado.producto_descripcion : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -150,8 +156,8 @@ const PageProductos = () => {
           <input
           className="form-control"
           type="text"
-          name="Linea"
-          value = {productoSeleccionado ? productoSeleccionado.Linea : ''}
+          name="linea_codigo"
+          value = {productoSeleccionado ? productoSeleccionado.linea_codigo : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -160,8 +166,8 @@ const PageProductos = () => {
           <input
           className="form-control"
           type="text"
-          name="UM"
-          value = {productoSeleccionado ? productoSeleccionado.UM : ''}
+          name="um_codigo"
+          value = {productoSeleccionado ? productoSeleccionado.um_codigo : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -170,8 +176,8 @@ const PageProductos = () => {
           <input
           className="form-control"
           type="text"
-          name="Estado"
-          value = {productoSeleccionado ? productoSeleccionado.Estado : ''}
+          name="producto_estado"
+          value = {productoSeleccionado ? productoSeleccionado.producto_estado : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -180,8 +186,8 @@ const PageProductos = () => {
           <input
           className="form-control"
           type="text"
-          name="Marca"
-          value = {productoSeleccionado ? productoSeleccionado.Marca : ''}
+          name="marca_codigo"
+          value = {productoSeleccionado ? productoSeleccionado.marca_codigo : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -190,18 +196,18 @@ const PageProductos = () => {
           <input
           className="form-control"
           type="text"
-          name="Precio"
-          value = {productoSeleccionado ? productoSeleccionado.Precio : ''}
+          name="producto_precio"
+          value = {productoSeleccionado ? productoSeleccionado.producto_precio : ''}
           onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
-          <label>Imagen</label>
+          <label>URL Imagen</label>
           <input
           className="form-control"
           type="text"
-          name="Imagen"
-          value = {productoSeleccionado ? productoSeleccionado.Imagen : ''}
+          name="producto_imagen"
+          value = {productoSeleccionado ? productoSeleccionado.producto_imagen : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -215,7 +221,7 @@ const PageProductos = () => {
     <Modal isOpen={modalEditar}>
       <ModalHeader>
         <div>
-          <h3>Editar Pedido</h3>
+          <h3>Editar Producto</h3>
         </div>
       </ModalHeader>
       <ModalBody>
@@ -224,17 +230,17 @@ const PageProductos = () => {
           className="form-control"
           readonly
           type="hidden"
-          value={productoSeleccionado && productoSeleccionado.id}
+          value={productoSeleccionado && productoSeleccionado.producto_codigo}
           onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
-          <label>Producto</label>
+          <label>Descripcion</label>
           <input
           className="form-control"
           type="text"
-          name="Producto"
-          value = {productoSeleccionado ? productoSeleccionado.Producto : ''}
+          name="producto_descripcion"
+          value = {productoSeleccionado ? productoSeleccionado.producto_descripcion : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -243,8 +249,8 @@ const PageProductos = () => {
           <input
           className="form-control"
           type="text"
-          name="Linea"
-          value = {productoSeleccionado ? productoSeleccionado.Linea : ''}
+          name="linea_codigo"
+          value = {productoSeleccionado ? productoSeleccionado.linea_codigo : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -253,8 +259,8 @@ const PageProductos = () => {
           <input
           className="form-control"
           type="text"
-          name="UM"
-          value = {productoSeleccionado ? productoSeleccionado.UM : ''}
+          name="um_codigo"
+          value = {productoSeleccionado ? productoSeleccionado.um_codigo : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -263,8 +269,8 @@ const PageProductos = () => {
           <input
           className="form-control"
           type="text"
-          name="Estado"
-          value = {productoSeleccionado ? productoSeleccionado.Estado : ''}
+          name="producto_estado"
+          value = {productoSeleccionado ? productoSeleccionado.producto_estado : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -273,8 +279,8 @@ const PageProductos = () => {
           <input
           className="form-control"
           type="text"
-          name="Marca"
-          value = {productoSeleccionado ? productoSeleccionado.Marca : ''}
+          name="marca_codigo"
+          value = {productoSeleccionado ? productoSeleccionado.marca_codigo : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -284,18 +290,18 @@ const PageProductos = () => {
           <input
           className="form-control"
           type="text"
-          name="Precio"
-          value = {productoSeleccionado ? productoSeleccionado.Precio : ''}
+          name="producto_precio"
+          value = {productoSeleccionado ? productoSeleccionado.producto_precio : ''}
           onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
-          <label>Imagen</label>
+          <label>URL Imagen</label>
           <input
           className="form-control"
           type="text"
-          name="Imagen"
-          value = {productoSeleccionado ? productoSeleccionado.Imagen : ''}
+          name="producto_imagen"
+          value = {productoSeleccionado ? productoSeleccionado.producto_imagen : ''}
           onChange={handleChange}
           />
         </FormGroup>
@@ -309,7 +315,7 @@ const PageProductos = () => {
 
     <Modal isOpen={modalEliminar}>
       <ModalBody>
-        ¿Estas seguro que deseas eliminar a {productoSeleccionado && productoSeleccionado.Producto} ?
+        ¿Estas seguro que deseas eliminar a {productoSeleccionado && productoSeleccionado.producto_descripcion} ?
       </ModalBody>
       <ModalFooter>
         <Button color="danger" onClick={eliminar}>Eliminar</Button>
